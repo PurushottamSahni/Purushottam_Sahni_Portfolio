@@ -140,7 +140,6 @@ window.PORTFOLIO = {
       links: [{ label: "LinkedIn post", href: "https://www.linkedin.com/posts/purushottam-sahni_weekly-credit-card-analysis-activity-7200493655462170624-tCz_" }]
     },
     {
-      /* TODO: check the LinkedIn group-post link opens for visitors who are not signed in. */
       id: "uktrain", category: "Data", year: 2024,
       title: "Maven UK Train Analysis",
       summary: "Revenue, routes, ticket types and journey reliability for UK rail, January to April 2024.",
@@ -150,12 +149,11 @@ window.PORTFOLIO = {
       links: [{ label: "LinkedIn post", href: "https://www.linkedin.com/feed/update/urn:li:activity:7201488327538073600" }]
     },
     {
-      /* TODO: confirm "Python" and "fed by a Python pipeline"; the LinkedIn post lists only Power BI, DAX and Power Query. */
       id: "olympics", category: "Data", year: 2024,
       title: "Paris 2024 Olympic Games Analysis",
-      summary: "Athletes, medals by country and gender, and a world map of winning nations, fed by a Python pipeline.",
+      summary: "Athletes, medals by country and gender, and a world map of winning nations, built from a Kaggle dataset.",
       results: ["11,113 athletes, 92 medal-winning countries", "329 gold, 333 silver, 390 bronze"],
-      tools: ["Python", "Power BI", "DAX", "Power Query"],
+      tools: ["Power BI", "DAX", "Power Query"],
       image: "assets/projects/olympics.webp",
       links: [{ label: "LinkedIn post", href: "https://www.linkedin.com/posts/dataanalystpurushottam-sahni_dataanalytics-powerbi-olympics-ugcPost-7272838345544622082-anVW/" }]
     },
@@ -190,7 +188,6 @@ window.PORTFOLIO = {
       ]
     },
     {
-      /* TODO: confirm the hackathon year (the submission PDF says 2025, this card says 2026). */
       id: "defi", category: "AI", year: 2026,
       title: "DeFi Analyst Terminal",
       summary: "A research terminal that explains DeFi data in plain language: live protocol TVL with a risk badge, and an Ethereum wallet analyzer.",
