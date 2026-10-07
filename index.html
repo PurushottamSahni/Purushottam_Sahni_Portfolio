@@ -73,7 +73,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=72">
+  <link rel="stylesheet" href="css/style.css?v=73">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -150,7 +150,7 @@
           <form class="console-in" id="console-form" autocomplete="off">
             <span class="prompt">sql&gt;</span>
             <input id="console-input" spellcheck="false" aria-label="SQL query" placeholder="SELECT title FROM projects LIMIT 5">
-            <button class="btn btn-amber" type="submit">Run</button>
+            <button class="btn btn-accent" type="submit">Run</button>
           </form>
           <div class="console-out" id="console-out" aria-live="polite"></div>
         </div>
@@ -160,15 +160,15 @@
     <!-- ============ ABOUT + EDUCATION ============ -->
     <section id="about" class="section">
       <div class="wrap split">
-        <header class="sec-head reveal">
+        <header class="sec-head">
           <p class="label">About</p>
           <h2>A little about me.</h2>
         </header>
         <div class="sec-body">
-          <div class="about reveal" id="about-text"><p>I&#x27;m a data analyst focused on business and product questions. I build dashboards in Power BI, Excel and Looker Studio, use SQL and Python to prepare the data, and use AI tools to speed up the first pass of an analysis.</p><p>I like turning messy numbers into one clear answer that a team can act on.</p></div>
-          <p class="langs reveal" data-bind="profile.languages"></p>
-          <h3 class="sub-label reveal">Education</h3>
-          <ul class="edu reveal" id="education"></ul>
+          <div class="about" id="about-text"><p>I&#x27;m a data analyst focused on business and product questions. I build dashboards in Power BI, Excel and Looker Studio, use SQL and Python to prepare the data, and use AI tools to speed up the first pass of an analysis.</p><p>I like turning messy numbers into one clear answer that a team can act on.</p></div>
+          <p class="langs" data-bind="profile.languages"></p>
+          <h3 class="sub-label">Education</h3>
+          <ul class="edu" id="education"></ul>
         </div>
       </div>
     </section>
@@ -176,7 +176,7 @@
     <!-- ============ EXPERIENCE ============ -->
     <section id="experience" class="section">
       <div class="wrap split">
-        <header class="sec-head reveal">
+        <header class="sec-head">
           <p class="label">Experience</p>
           <h2>Where I've worked.</h2>
         </header>
@@ -187,13 +187,13 @@
     <!-- ============ PROJECTS ============ -->
     <section id="projects" class="section">
       <div class="wrap">
-        <header class="sec-head sec-head-wide reveal">
+        <header class="sec-head sec-head-wide">
           <p class="label">Projects</p>
           <h2>Selected projects.</h2>
           <p class="dek">Dashboards and analyses. Each one starts from a business question.</p>
         </header>
         <div class="feat-list" id="project-feature"></div>
-        <h3 class="sub-label reveal">More projects</h3>
+        <h3 class="sub-label">More projects</h3>
         <ul class="plist" id="project-list"></ul>
         <div class="peek" id="peek" aria-hidden="true"><img alt=""></div>
       </div>
@@ -202,68 +202,68 @@
     <!-- ============ AI ============ -->
     <section id="ai" class="section">
       <div class="wrap">
-        <header class="sec-head sec-head-wide reveal">
+        <header class="sec-head sec-head-wide">
           <p class="label">AI</p>
           <h2>Building with <em>AI</em>.</h2>
           <p class="dek" id="ai-intro"></p>
         </header>
         <div class="grid" id="ai-grid"></div>
-        <h3 class="sub-label reveal">How I work with AI</h3>
-        <ol class="method reveal" id="ai-method"></ol>
+        <h3 class="sub-label">How I work with AI</h3>
+        <ol class="method" id="ai-method"></ol>
       </div>
     </section>
 
     <!-- ============ SKILLS ============ -->
     <section id="skills" class="section">
       <div class="wrap split">
-        <header class="sec-head reveal">
+        <header class="sec-head">
           <p class="label">Skills</p>
           <h2>Tools I use.</h2>
         </header>
-        <dl class="skills reveal" id="skills-list"></dl>
+        <dl class="skills" id="skills-list"></dl>
       </div>
     </section>
 
     <!-- ============ CERTIFICATIONS ============ -->
     <section id="certifications" class="section">
       <div class="wrap">
-        <header class="sec-head sec-head-wide reveal">
+        <header class="sec-head sec-head-wide">
           <p class="label">Certifications</p>
           <h2>Always learning.</h2>
         </header>
         <div class="certs" id="certs-top"></div>
         <button class="btn btn-ghost show-all" id="certs-toggle" type="button" aria-expanded="false" aria-controls="certs-more"></button>
         <ul class="certs-more" id="certs-more" hidden></ul>
-        <div class="badges reveal" id="badges" aria-label="Digital badges"></div>
+        <div class="badges" id="badges" aria-label="Digital badges"></div>
       </div>
     </section>
 
     <!-- ============ LEADERSHIP ============ -->
     <section id="leadership-section" class="section">
       <div class="wrap split">
-        <header class="sec-head reveal">
+        <header class="sec-head">
           <p class="label">Leadership</p>
           <h2>Beyond the data.</h2>
         </header>
-        <ul class="edu reveal" id="leadership"></ul>
+        <ul class="edu" id="leadership"></ul>
       </div>
     </section>
 
     <!-- ============ CONTACT ============ -->
     <section id="contact" class="section contact">
       <div class="wrap">
-        <header class="sec-head sec-head-wide reveal">
+        <header class="sec-head sec-head-wide">
           <p class="label">Contact</p>
           <h2>Start a <em>conversation</em>.</h2>
         </header>
-        <div class="term reveal">
+        <div class="term">
           <p class="t-dim">&gt; SELECT analyst FROM candidates WHERE curious AND commercial AND grounded;</p>
           <p class="t-dim">-- 1 row returned (0.004 s)</p>
           <p class="t-name" data-bind="profile.name"></p>
           <p class="t-dim"><span data-bind="profile.availability"></span> · <span data-bind="profile.location"></span></p>
           <div class="t-links" id="contact-links"></div>
           <p class="t-hire">&gt; query complete. hire? <span class="keys"><button id="hire-y" type="button">[Y</button>/<button id="hire-n" type="button">n]</button></span><span class="caret" aria-hidden="true"></span></p>
-          <div class="t-hire-btns"><button class="btn btn-amber" id="hire-y2" type="button">Yes, let's talk</button><button class="btn btn-ghost" id="hire-n2" type="button">Not yet</button></div>
+          <div class="t-hire-btns"><button class="btn btn-accent" id="hire-y2" type="button">Yes, let's talk</button><button class="btn btn-ghost" id="hire-n2" type="button">Not yet</button></div>
           <pre class="t-log" id="hire-log" aria-live="polite"></pre>
         </div>
       </div>
@@ -294,8 +294,8 @@
     </div>
   </div>
 
-  <script src="js/content.js?v=72"></script>
-  <script src="js/query.js?v=72"></script>
-  <script src="js/main.js?v=72"></script>
+  <script src="js/content.js?v=73"></script>
+  <script src="js/query.js?v=73"></script>
+  <script src="js/main.js?v=73"></script>
 </body>
 </html>

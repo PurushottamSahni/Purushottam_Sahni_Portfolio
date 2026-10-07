@@ -136,7 +136,7 @@
       </div>
     </li>`).join("");
   $("#experience-list").innerHTML = P.experience.map(j => `
-    <article class="job reveal">
+    <article class="job">
       <div class="job-head">
         <h3>${esc(j.role)}</h3>
         <p class="co"><span>${esc(j.company)}, ${esc(j.place)}</span><span class="period">${esc(j.period)}</span></p>
@@ -188,7 +188,7 @@
   function card(p) {
     const t = esc(p.title);
     return `
-    <article class="card reveal">
+    <article class="card">
       ${p.image ? `<button class="shot" type="button" data-img="${esc(p.image)}" data-cap="${t}" aria-label="Enlarge the ${t} dashboard"><img src="${esc(p.image)}" alt="${t} dashboard screenshot" loading="lazy"></button>` : ""}
       <div class="card-body">
         <p class="card-meta"><span class="${p.category === "AI" ? "cat-ai" : ""}">${esc(p.category === "AI" ? "AI build" : "Dashboard")}</span></p>
@@ -217,7 +217,7 @@
   $("#project-feature").innerHTML = featured.map((p, i) => {
     const t = esc(p.title);
     return `
-    <article class="feat reveal${i % 2 ? " flip" : ""}">
+    <article class="feat${i % 2 ? " flip" : ""}">
       <button class="feat-shot shot" type="button" data-img="${esc(p.image)}" data-cap="${t}" aria-label="Enlarge the ${t} dashboard"><img src="${esc(p.image)}" alt="${t} dashboard screenshot" loading="lazy"></button>
       <div class="feat-body">
         <p class="yr">${p.year}</p>
@@ -238,7 +238,7 @@
   };
   const shotOf = p => p.image || ((p.links || []).find(l => l.img) || {}).img || "";
   $("#project-list").innerHTML = rest.map(p => `
-    <li class="prow reveal" data-peek="${esc(shotOf(p))}">
+    <li class="prow" data-peek="${esc(shotOf(p))}">
       <span class="yr">${p.year}</span>
       <div class="pmain"><h4>${esc(p.title)}</h4><p>${esc(p.results[0])}</p></div>
       <ul class="tags">${p.tools.slice(0, 3).map(x => `<li>${esc(x)}</li>`).join("")}</ul>
@@ -314,7 +314,7 @@
   const verifyLink = c => c.verify ? `<a href="${esc(c.verify)}" target="_blank" rel="noopener" aria-label="Verify credential: ${esc(c.title)}">Verify ${ARROW}</a>` : "";
   const top = P.certificates.filter(c => c.featured), more = P.certificates.filter(c => !c.featured);
   $("#certs-top").innerHTML = top.map(c => `
-    <article class="cert reveal">
+    <article class="cert">
       <p class="yr">${c.year}</p><h3>${esc(c.title)}</h3><p class="by">${esc(c.issuer)}</p>
       <div class="links">${viewLink(c)}${verifyLink(c)}</div>
     </article>`).join("");
@@ -331,7 +331,7 @@
   /* ---------- contact ---------- */
   const L = P.profile.links;
   $("#contact-links").innerHTML =
-    `<a class="btn btn-amber" href="mailto:${esc(P.profile.email)}">${esc(P.profile.email)}</a>` +
+    `<a class="btn btn-accent" href="mailto:${esc(P.profile.email)}">${esc(P.profile.email)}</a>` +
     `<a class="btn btn-ghost" href="${esc(L.linkedin)}" target="_blank" rel="noopener">LinkedIn ${ARROW}</a>` +
     `<a class="btn btn-ghost" href="${esc(L.github)}" target="_blank" rel="noopener">GitHub ${ARROW}</a>` +
     `<a class="btn btn-ghost" href="${esc(P.profile.resume)}" target="_blank" rel="noopener">Résumé ${ARROW}</a>`;
@@ -369,12 +369,10 @@
     en.target.classList.add("seen"); io.unobserve(en.target);
   }), { rootMargin: "0px 0px -55% 0px" });
   $$("main .section").forEach(s => io.observe(s));
-  const observeReveals = () => {}, showNow = () => {};
 
   /* ---------- start ---------- */
   $("#ai-intro").textContent = P.ai.intro;
   $("#ai-method").innerHTML = P.ai.method.map(s => `<li><b>${esc(s.title)}</b><span>${esc(s.text)}</span></li>`).join("");
-  aiGrid.innerHTML = aiProjects.map(card).join(""); observeReveals(aiGrid);
-  observeReveals(document);
+  aiGrid.innerHTML = aiProjects.map(card).join("");
   onScroll();
 })();
