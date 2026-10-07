@@ -117,6 +117,7 @@
   } else vid.remove();
 
   /* ---------- about, education, experience ---------- */
+  $("#timeline").innerHTML = P.timeline.map(t => `<li><span class="when">${esc(t.when)}</span><p>${esc(t.what)}</p></li>`).join("");
   $("#about-text").innerHTML = P.about.map(t => `<p>${esc(t)}</p>`).join("");
   $("#education").innerHTML = P.education.map(e => `
     <li>
@@ -157,6 +158,38 @@
   lb.addEventListener("click", e => { if (e.target === lb) closeLightbox(); });
   document.addEventListener("click", e => { const b = e.target.closest("[data-img]"); if (b) openLightbox(b.dataset.img, b.dataset.cap); });
 
+  /* clickable stage diagram used inside case studies: arrow keys move between stages, one sentence per stage */
+  function pipelineHtml(stages) {
+    return `<div class="pipe" data-pipe>
+      <div class="pipe-stages" role="tablist" aria-label="Pipeline stages">
+        ${stages.map((s, i) => `<button type="button" role="tab" class="pipe-stage${s.gate ? " gate" : ""}" id="pipe-t${i}" aria-controls="pipe-panel" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}" data-i="${i}">
+          <span class="pipe-n">${i + 1}</span><span class="pipe-name">${esc(s.t)}</span>${s.gate ? `<span class="pipe-flag">Human approval</span>` : ""}</button>`).join("")}
+      </div>
+      <div class="pipe-panel" id="pipe-panel" role="tabpanel" aria-live="polite" tabindex="0"></div>
+      <script type="application/json" class="pipe-data">${JSON.stringify(stages).replace(/</g, "\\u003c")}</script>
+    </div>`;
+  }
+  function initPipelines(root) {
+    $$("[data-pipe]", root).forEach(box => {
+      const stages = JSON.parse($(".pipe-data", box).textContent), tabs = $$(".pipe-stage", box), panel = $(".pipe-panel", box);
+      const show = (i, focus) => {
+        tabs.forEach((t, j) => { t.setAttribute("aria-selected", j === i); t.tabIndex = j === i ? 0 : -1; });
+        panel.setAttribute("aria-labelledby", tabs[i].id);
+        panel.innerHTML = `<h4>${i + 1}. ${esc(stages[i].t)}</h4><p>${esc(stages[i].d)}</p>${stages[i].gate ? `<p class="pipe-gate">Human-approval gate: risky actions wait for a person to say yes.</p>` : ""}`;
+        if (focus) tabs[i].focus();
+      };
+      tabs.forEach((t, i) => t.addEventListener("click", () => show(i)));
+      $(".pipe-stages", box).addEventListener("keydown", e => {
+        const cur = tabs.findIndex(t => t.getAttribute("aria-selected") === "true"); let n = -1;
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") n = (cur + 1) % tabs.length;
+        else if (e.key === "ArrowLeft" || e.key === "ArrowUp") n = (cur - 1 + tabs.length) % tabs.length;
+        else if (e.key === "Home") n = 0; else if (e.key === "End") n = tabs.length - 1;
+        if (n >= 0) { e.preventDefault(); show(n, true); }
+      });
+      show(0);
+    });
+  }
+
   /* ---------- case study panel ---------- */
   const caseEl = $("#case"), casePanel = $("#case-panel"); let caseFocus = null;
   function openCase(id) {
@@ -166,8 +199,10 @@
       <section>
         <h3>${esc(b.h)}</h3>
         ${b.p ? `<p>${esc(b.p)}</p>` : ""}
+        ${b.pipeline ? pipelineHtml(b.pipeline) : ""}
         ${b.ol ? `<ol>${b.ol.map(i => `<li><b>${esc(i.b)}</b> ${esc(i.t)}</li>`).join("")}</ol>` : ""}
       </section>`).join("");
+    initPipelines($("#case-body"));
     caseEl.hidden = false; document.body.style.overflow = "hidden"; casePanel.scrollTop = 0; $("#case-close").focus();
   }
   function closeCase() { caseEl.hidden = true; document.body.style.overflow = ""; if (caseFocus) caseFocus.focus(); }

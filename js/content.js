@@ -26,6 +26,20 @@ window.PORTFOLIO = {
     }
   },
 
+  /* ---------- Timeline (About) ----------
+     Built only from facts elsewhere in this file.
+     TODO: 2022 to 2025 is covered by certificates and projects only; add a job, freelance work or anything else from those years. */
+  timeline: [
+    { when: "2015 – 2019", what: "B.Sc. Agriculture (Hons.) at Dr. K.N. Modi University. Founded and led the Green Club, and helped organise a national sports meet and an international conference." },
+    { when: "Jan – Mar 2019", what: "Rural Agricultural Work Experience at Kota Agriculture University, leading a team of 30." },
+    { when: "2020 – 2022", what: "Master of Agri-Business Management at Banaras Hindu University. Thesis on blockchain in food supply chain management." },
+    { when: "2021", what: "Marketing research intern at Ingemann Data, Denmark. Led 80 volunteers and 1,500+ guests as Accommodation Head at the Agricultural Science Congress." },
+    { when: "2022 – 2023", what: "First analytics certificates: Power BI, Excel, Python and prompt engineering." },
+    { when: "2024", what: "First dashboards in Power BI, Excel and Looker Studio, plus SQL and business analysis training." },
+    { when: "2025", what: "Google Data Analytics certificate. Reddit sentiment analysis in Python." },
+    { when: "2026", what: "Google AI certificate. Built a DeFi research terminal, a trading research bot and Product Sentinel, an AI product analyst." }
+  ],
+
   /* ---------- About ---------- */
   about: [
     "I'm a data analyst focused on business and product questions. I build dashboards in Power BI, Excel and Looker Studio, use SQL and Python to prepare the data, and use AI tools to speed up the first pass of an analysis.",
@@ -168,7 +182,16 @@ window.PORTFOLIO = {
         blocks: [
           { h: "The problem", p: "Product analysts spend hours noticing that a metric dropped, working out why, and telling the right people. Most of that loop is routine, and it is slow." },
           { h: "What I built", p: "Sentinel is an AI agent that watches a product's funnel metrics, catches drops, finds the root cause and acts on it. I built it solo for the All Things Agentic Hackathon, Taskmaster track. To test it, I made a fictional task-management app called TaskFlow for it to monitor." },
-          { h: "How it works", p: "Seven stages: trigger, detect, verify, investigate, explain, act, record. For safe steps it acts on its own: it posts Slack alerts and opens Jira tickets. Before anything irreversible, like pausing a feature rollout, it asks a human first." },
+          { h: "How it works", p: "Seven stages, from a metric dropping to a recorded action. For safe steps Sentinel acts on its own. Before anything irreversible, it asks a human first.",
+            pipeline: [
+              { t: "Trigger", d: "A scheduler starts a check on the product's funnel metrics." },
+              { t: "Detect", d: "Sentinel looks for drops, narrowing to the affected platform first so a platform-specific fall is not hidden by the product-wide average." },
+              { t: "Verify", d: "It checks that the drop is real and the data can be trusted before raising an alarm." },
+              { t: "Investigate", d: "It works through the data to find the root cause of the drop." },
+              { t: "Explain", d: "It writes a plain-language explanation of what happened and why." },
+              { t: "Act", d: "Slack alerts and Jira tickets go out on their own. Pausing a rollout is the one step that waits for a human to approve it.", gate: true },
+              { t: "Record", d: "It logs what it saw and what it did, so there is a trail to review." }
+            ] },
           { h: "What I checked", p: "11 of 11 automated tests pass. I verified real Jira tickets and Slack alerts end to end, and the human approval gate works on pause actions." },
           { h: "Five problems I solved", ol: [
             { b: "Detection dilution.", t: "Scanning the whole product hid drops that affected only one platform. I fixed it by narrowing to the affected platform before the trust check, not after." },

@@ -466,7 +466,7 @@ h2 em, .display em { font-style: normal; }
 .case { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 20px; background: rgba(10, 14, 12, .72); animation: fade .2s ease; }
 .case[hidden] { display: none; }
 .case-panel { position: relative; width: min(760px, 100%); max-height: calc(100vh - 40px); overflow-y: auto; padding: clamp(28px, 5vw, 56px); background: var(--paper); border: 1px solid var(--line-2); border-radius: 14px; box-shadow: var(--shadow-lg); }
-.case-close { position: sticky; top: 0; float: right; z-index: 1; min-height: 44px; margin: -12px -12px 0 12px; padding: 0 16px; font: 500 15px var(--f-body); color: var(--ink); background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 99px; cursor: pointer; }
+.case-close { position: sticky; top: 0; z-index: 2; display: block; width: max-content; min-height: 44px; margin: -12px -12px 12px auto; box-shadow: 0 2px 10px rgba(0, 0, 0, .12); padding: 0 16px; font: 500 15px var(--f-body); color: var(--ink); background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 99px; cursor: pointer; }
 .case-close:hover { border-color: var(--ink); }
 #case-body h2 { font-size: clamp(28px, 4vw, 40px); margin-bottom: 28px; }
 #case-body section { margin-top: 28px; }
@@ -475,3 +475,37 @@ h2 em, .display em { font-style: normal; }
 #case-body ol { padding-left: 1.3em; display: grid; gap: 12px; }
 #case-body li b { color: var(--ink); font-weight: 600; }
 .job + .job { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--line); }
+
+/* ================= SENTINEL PIPELINE DIAGRAM ================= */
+.pipe { margin-top: 18px; }
+.pipe-stages { display: flex; align-items: flex-start; gap: 0; }
+.pipe-stage { position: relative; flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 0 2px; font: 500 14px/1.2 var(--f-body); color: var(--ink-2); background: none; border: 0; cursor: pointer; text-align: center; }
+.pipe-stage::before { content: ""; position: absolute; top: 18px; left: -50%; width: 100%; height: 2px; background: var(--line-2); z-index: 0; }
+.pipe-stage:first-child::before { display: none; }
+.pipe-n { position: relative; z-index: 1; display: grid; place-items: center; width: 36px; height: 36px; font: 600 14px var(--f-body); color: var(--ink); background: var(--paper); border: 2px solid var(--line-2); border-radius: 50%; transition: background .2s, border-color .2s, color .2s; }
+.pipe-stage:hover .pipe-n { border-color: var(--accent); }
+.pipe-stage[aria-selected="true"] .pipe-n { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.pipe-stage[aria-selected="true"] .pipe-name { color: var(--ink); font-weight: 600; }
+.pipe-stage.gate .pipe-n { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-wash); }
+.pipe-flag { font: 600 12px/1.2 var(--f-body); color: var(--accent-ink); }
+.pipe-stage:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 4px; border-radius: 8px; }
+.pipe-panel { margin-top: 18px; padding: 18px 20px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r); }
+.pipe-panel h4 { font: 600 17px/1.3 var(--f-body); color: var(--ink); }
+.pipe-panel p { margin-top: 6px; max-width: 58ch; color: var(--ink-2); }
+.pipe-panel .pipe-gate { color: var(--accent-ink); font-weight: 600; }
+@media (max-width: 600px) {
+  .pipe-stages { flex-direction: column; align-items: stretch; }
+  .pipe-stage { flex-direction: row; align-items: center; justify-content: flex-start; gap: 12px; min-height: 44px; padding: 4px 0; text-align: left; }
+  .pipe-stage::before { top: auto; bottom: 50%; left: 17px; width: 2px; height: 100%; }
+  .pipe-flag { margin-left: auto; }
+}
+
+/* ================= TIMELINE (About) ================= */
+.timeline { margin-top: 12px; padding: 0; list-style: none; border-left: 2px solid var(--line-2); }
+.timeline li { position: relative; display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 4px 24px; padding: 0 0 22px 24px; }
+.timeline li:last-child { padding-bottom: 0; }
+.timeline li::before { content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; background: var(--paper); border: 2px solid var(--accent); border-radius: 50%; }
+.timeline li:last-child::before { background: var(--accent); }
+.timeline .when { font: 600 15px/1.5 var(--f-body); color: var(--accent-ink); }
+.timeline p { max-width: 58ch; color: var(--ink-2); }
+@media (max-width: 600px) { .timeline li { grid-template-columns: 1fr; padding-left: 18px; } }
