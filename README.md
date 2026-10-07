@@ -31,7 +31,7 @@ python -m http.server 5173
 Then open http://localhost:5173 (run it inside this folder).
 
 ## Publish free on GitHub Pages
-This repo is `PurushottamSahni.github.io`, so GitHub Pages serves it at https://purushottamsahni.github.io/ (Settings → Pages → Deploy from branch → main / root).
+GitHub Pages serves this repo at https://purushottamsahni.github.io/Purushottam_Sahni_Portfolio/ (Settings → Pages → Deploy from branch → main / root).
 
 After editing files, bump the `?v=` number on the CSS and JS links in `index.html` so browsers load the new version.
 
