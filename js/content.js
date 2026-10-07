@@ -11,7 +11,7 @@ window.PORTFOLIO = {
     name: "Purushottam Kumar Sahni",
     shortName: "Purushottam",
     role: "Data Analyst · Business & Product Analytics",
-    headline: "I follow signals.",                    // the last word is highlighted
+    headline: "I follow signals.",                    // the last word gets the wavy underline
     subline: "I turn business data into decisions with SQL, Power BI, Python and AI.",
     location: "Noida, India",
     availability: "Open to remote, hybrid and relocation",
@@ -88,8 +88,7 @@ window.PORTFOLIO = {
     {
       role: "Organiser, National Sports Meet UTOPIA",
       org: "Dr. K.N. Modi University",
-      period: "2017",
-      note: ""
+      period: "2017"
     },
     {
       role: "School Captain",
@@ -126,11 +125,12 @@ window.PORTFOLIO = {
   ],
 
   /* ---------- Projects ----------
-     category: "Data" or "AI" (used by the filter tabs)
+     category: "Data" (shown in Projects) or "AI" (shown in the AI section)
      image:    optional dashboard screenshot (click to enlarge)
      results:  1–2 short real results                                     */
   projects: [
     {
+      /* TODO(currency): the dashboard shows "57M" with no symbol; add the currency once confirmed. */
       id: "creditcard", category: "Data", year: 2024,
       title: "Credit Card Transaction Report",
       summary: "Weekly and quarterly view of card revenue, interest and customer segments.",
@@ -140,6 +140,7 @@ window.PORTFOLIO = {
       links: [{ label: "LinkedIn post", href: "https://www.linkedin.com/posts/purushottam-sahni_weekly-credit-card-analysis-activity-7200493655462170624-tCz_" }]
     },
     {
+      /* TODO: check the LinkedIn group-post link opens for visitors who are not signed in. */
       id: "uktrain", category: "Data", year: 2024,
       title: "Maven UK Train Analysis",
       summary: "Revenue, routes, ticket types and journey reliability for UK rail, January to April 2024.",
@@ -149,6 +150,7 @@ window.PORTFOLIO = {
       links: [{ label: "LinkedIn post", href: "https://www.linkedin.com/feed/update/urn:li:activity:7201488327538073600" }]
     },
     {
+      /* TODO: confirm "Python" and "fed by a Python pipeline"; the LinkedIn post lists only Power BI, DAX and Power Query. */
       id: "olympics", category: "Data", year: 2024,
       title: "Paris 2024 Olympic Games Analysis",
       summary: "Athletes, medals by country and gender, and a world map of winning nations, fed by a Python pipeline.",
@@ -188,6 +190,7 @@ window.PORTFOLIO = {
       ]
     },
     {
+      /* TODO: confirm the hackathon year (the submission PDF says 2025, this card says 2026). */
       id: "defi", category: "AI", year: 2026,
       title: "DeFi Analyst Terminal",
       summary: "A research terminal that explains DeFi data in plain language: live protocol TVL with a risk badge, and an Ethereum wallet analyzer.",
@@ -199,6 +202,7 @@ window.PORTFOLIO = {
       ]
     },
     {
+      /* TODO: no link or screenshot yet. */
       id: "tradingbot", category: "AI", year: 2026,
       title: "Algo-trading bot: backtest to paper trade",
       summary: "A Python research bot for BTC, ETH and SOL: a multi-timeframe strategy, a backtester, and a paper-trading bot on Delta Exchange's test network.",
@@ -207,6 +211,7 @@ window.PORTFOLIO = {
       links: []
     },
     {
+      /* TODO: no link or screenshot yet (the GitHub repo could be linked here). */
       id: "portfolio", category: "AI", year: 2026,
       title: "This portfolio, built with AI",
       summary: "Designed and built with Claude Code. The avatar video was rebuilt frame by frame from a Gemini clip.",
@@ -226,6 +231,7 @@ window.PORTFOLIO = {
       ]
     },
     {
+      /* TODO: add the LinkedIn post link if there is one. */
       id: "ola", category: "Data", year: 2024,
       title: "OLA Ride Analytics",
       summary: "Bookings, revenue, cancellations and ratings across seven vehicle types, built on a synthetic Bengaluru ride dataset.",
@@ -236,6 +242,7 @@ window.PORTFOLIO = {
       ]
     },
     {
+      /* TODO: no link or screenshot yet. */
       id: "sentiment", category: "Data", year: 2025,
       title: "Reddit Sentiment: Tesla, Cars and Tech",
       summary: "Collected Reddit posts and their comments, cleaned the text, scored sentiment, and built a Power BI report.",
@@ -244,6 +251,7 @@ window.PORTFOLIO = {
       links: []
     },
     {
+      /* TODO: add the LinkedIn post link if there is one. */
       id: "healthcare", category: "Data", year: 2024,
       title: "Healthcare Dashboard",
       summary: "A Power BI report on hospital waiting lists by specialty, case type and age profile, 2018 to 2021.",
