@@ -129,7 +129,7 @@
   $("#leadership").innerHTML = P.leadership.map(l => `
     <li>
       <div>
-        <h4>${esc(l.role)}</h4>
+        <h3>${esc(l.role)}</h3>
         <p class="school"><span>${esc(l.org)}</span><span class="period">${esc(l.period)}</span></p>
         ${l.note ? `<p class="note">${esc(l.note)}</p>` : ""}
         ${l.link ? `<p class="note"><a class="inline-link" href="${esc(l.link.href)}" target="_blank" rel="noopener">${esc(l.link.label)} ↗</a></p>` : ""}
