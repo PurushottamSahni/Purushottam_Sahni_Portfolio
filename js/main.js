@@ -98,7 +98,7 @@
   }), { rootMargin: "-45% 0px -50% 0px" });
   sections.forEach(s => spy.observe(s));
 
-  /* ---------- hero avatar: looping video, gentle tilt ---------- */
+  /* ---------- hero avatar: looping video ---------- */
   const wrap = $("#avatar-wrap"), img = $("#avatar"), vid = $("#avatar-video"), V = P.profile.avatarVideo;
   img.src = P.profile.avatar;
   let heroVisible = true;
@@ -115,15 +115,6 @@
     addEventListener("focus", play); addEventListener("pageshow", play);
     setInterval(() => { if (vid.paused && heroVisible && !document.hidden) play(); }, 1500);   // browsers sometimes pause hidden videos
   } else vid.remove();
-  if (!reduceMotion && canHover) {
-    const subject = $("#subject");
-    addEventListener("mousemove", e => {
-      if (!heroVisible) return;
-      const r = subject.getBoundingClientRect();
-      const nx = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)), ny = Math.min(1, Math.max(0, (e.clientY - r.top) / r.height));
-      wrap.style.transform = `rotateY(${((nx - .5) * 10).toFixed(2)}deg) rotateX(${(-(ny - .5) * 10).toFixed(2)}deg)`;
-    });
-  }
 
   /* ---------- about, education, experience ---------- */
   $("#about-text").innerHTML = P.about.map(t => `<p>${esc(t)}</p>`).join("");
@@ -355,17 +346,11 @@
   const hireNo = () => typeLog(["> noted. one visit is a small sample size.", "> suggestion: open another project, then re-run this query."]);
   ["#hire-y", "#hire-y2"].forEach(s => $(s).addEventListener("click", hireYes));
   ["#hire-n", "#hire-n2"].forEach(s => $(s).addEventListener("click", hireNo));
-  let contactVisible = false;
-  new IntersectionObserver(([en]) => { contactVisible = en.isIntersecting; }, { threshold: .5 }).observe($(".term"));
 
   /* ---------- keys ---------- */
   addEventListener("keydown", e => {
     if (e.key === "Escape") { if (!caseEl.hidden) closeCase(); if (!lb.hidden) closeLightbox(); if (nav.classList.contains("open")) setMenu(false); return; }
     if (e.key === "Tab" && !lb.hidden) { e.preventDefault(); $("#lightbox-close").focus(); return; }
-    if (contactVisible && lb.hidden && !/input|textarea/i.test(document.activeElement.tagName)) {
-      if (e.key === "y" || e.key === "Y") hireYes();
-      if (e.key === "n" || e.key === "N") hireNo();
-    }
   });
 
   /* ---------- scroll: progress line + top bar ---------- */
