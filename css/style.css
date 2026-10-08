@@ -107,7 +107,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .brand { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; text-decoration: none; font: 500 21px/1 var(--f-display); letter-spacing: -.01em; }
 .brand-name { display: flex; flex-direction: column; gap: 3px; }
 .brand-name b { font-weight: 500; }
-.brand-name small { font: 600 13px/1 var(--f-body); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+.brand-name small { font: 500 14px/1 var(--f-body); letter-spacing: .01em; color: var(--ink-3); }
 .brand-mark { width: 30px; height: 19px; fill: none; stroke: var(--accent); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 .nav { margin-left: auto; display: flex; gap: 2px; }
 .nav a { position: relative; padding: 10px 12px; font-size: 15px; font-weight: 500; color: var(--ink-2); text-decoration: none; transition: color .2s ease; }
