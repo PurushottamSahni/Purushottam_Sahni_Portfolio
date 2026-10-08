@@ -48,7 +48,7 @@
      Timer-based (not animation frames) and always ends on the real text, even in a background tab. */
   (function decodeHeadline() {
     const h = $("#headline"), subject = $("#subject");
-    if (reduceMotion || document.hidden) return;
+    if (reduceMotion || document.hidden) { h.classList.add("decoded"); return; }   // nothing to animate: just show it
     const nodes = [];
     (function walk(n) { n.childNodes.forEach(c => (c.nodeType === 3 ? nodes.push(c) : walk(c))); })(h);
     const finals = nodes.map(n => n.textContent), total = finals.join("").length, JUNK = "#01_?/NA%$";
@@ -61,7 +61,7 @@
     const finish = () => {
       if (done) return; done = true; clearInterval(timer);
       nodes.forEach((n, j) => { n.textContent = finals[j]; });
-      h.removeAttribute("aria-label"); h.classList.remove("decoding"); h.style.minHeight = "";
+      h.removeAttribute("aria-label"); h.classList.remove("decoding"); h.classList.add("decoded"); h.style.minHeight = "";
     };
     const start = () => {
       if (started) return; started = true;
