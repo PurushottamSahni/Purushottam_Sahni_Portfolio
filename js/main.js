@@ -18,6 +18,17 @@
   $("#year").textContent = new Date().getFullYear();
   $("#hero-resume").href = P.profile.resume;
   $("#brand-rest").textContent = P.profile.name.replace(P.profile.shortName, "").trim();   // "Kumar Sahni", shown small under the first name
+  /* Spread the surname so it is exactly as wide as the first name above it. */
+  const fitBrand = () => {
+    const first = $(".brand-name b"), rest = $("#brand-rest"), n = rest.textContent.length;
+    if (!first || n < 2) return;
+    rest.style.letterSpacing = "0px";
+    const gap = first.getBoundingClientRect().width - rest.getBoundingClientRect().width;
+    const px = Math.max(0, gap / (n - 1));                       // spacing goes after every letter but the last
+    rest.style.letterSpacing = px.toFixed(2) + "px";
+    rest.style.marginRight = (-px).toFixed(2) + "px";             // the trailing space should not widen the link
+  };
+  fitBrand(); if (document.fonts) document.fonts.ready.then(fitBrand);
   const words = P.profile.headline.trim().split(" "), lastWord = words.pop();
   $("#headline").innerHTML = `${esc(words.join(" "))} <em>${esc(lastWord)}</em>`;
 
